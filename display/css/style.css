@@ -340,8 +340,8 @@ Image credits: unsplash.com
 	line-height: 0.8;
 	/* background:#F00; */
 	text-align: center;
-	margin:15vh 0 0 0;
-	padding:0 4vw 0 0;
+	margin:10vh 0 0 0;
+	padding:0 4vw 1vw 0;
 	/* font-family: 'OpenSansCondLight', Impact,'Times New Roman', Helvetica, Arial, sans-serif;  */
 	font-weight:bold;
 	color:#FFF;
@@ -361,17 +361,30 @@ Image credits: unsplash.com
 	border-left: 0.7px solid rgba(255,255,255,0.6);
 	/* padding-left: 1.1vw; */
 }
+#ramadhan{
+	text-align: center;
+	color: #e2ad00;
+	font-size: 2vw;
+}
 #tgl{
 	text-align: center;
 	color:#FFF;
 	/* background-color:var(--main-bg-color); */
 	/* background-color:#33cccc; */
 	font-size:2vw;
+	/* margin: 0.8vh auto 7vw auto; */
+	font-weight:bold;
+	position:relative;
+}
+#hij{
+	text-align: center;
+	color:#FFF;
+	font-size:2vw;
 	margin: 0.8vh auto 7vw auto;
 	font-weight:bold;
 	position:relative;
 }
-#tgl:after{
+#hij:after{
 	display: block;
 	content: "";
 	position:absolute;
@@ -385,9 +398,22 @@ Image credits: unsplash.com
 	background-position: center center;
 	background-repeat: no-repeat;
 }
+/* #tgl:after{
+	display: block;
+	content: "";
+	position:absolute;
+	height:6vw;
+	width:20vw;
+	bottom: -5.8vw;
+	right:3vw; */
+	/* background-color:#e2ad0055; */
+	/* background-image: url(../img/clock-line.png);
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+} */
 #jadwal{
 	color:#33cccc;
-	
 	margin: 4vh;
 	font-weight:bold;
 }
@@ -470,12 +496,6 @@ Image credits: unsplash.com
 	/* background-color : #33cccc; */
 	/* color:#000; */
 /* } */
-
-
-
-
-
-
 
 #right-counter{
 	position:fixed;
@@ -610,13 +630,13 @@ Image credits: unsplash.com
 
 
 #logo{
-	height:7vw;
+	height:12vw;
 	width:70vw;
 	/* margin:3vh 3vw 4vh 3vw; */
 	/* background-color: #f00; */
 	position:fixed;
 	/* bottom:-4vh; */
-	bottom:5.6vw;
+	/* bottom:5.6vw; */
 	right:2vw;
 	/* background-color:#F00; */
 	/* background-image: url(../img/logo.png); */
@@ -700,4 +720,102 @@ Image credits: unsplash.com
 	font-size: 1.5vw;
 	font-style: italic;
 	position:relative;
+}
+
+/* countDownRamadhan */
+.countdown {
+margin-bottom: 10px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+color: #e2ad00;
+}
+
+@media only screen and (max-width: 1024px) {
+.countdown {
+	justify-content: center;
+}
+}
+
+.countdown .time {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.countdown .time:not(:last-child) {
+margin-right: 16px;
+}
+
+.countdown .time #days,
+.countdown .time #hours,
+.countdown .time #minutes,
+.countdown .time #seconds,
+.countdown .time .semicolon {
+font-family: Samsung Sharp Sans;
+font-style: normal;
+font-weight: bold;
+letter-spacing: 0.3px;
+}
+
+@media only screen and (min-width: 1024px) {
+
+.countdown .time #days,
+.countdown .time #hours,
+.countdown .time #minutes,
+.countdown .time #seconds,
+.countdown .time .semicolon {
+	font-size: 45px;
+	line-height: 40px;
+}
+}
+
+@media only screen and (max-width: 1024px) {
+
+.countdown .time #days,
+.countdown .time #hours,
+.countdown .time #minutes,
+.countdown .time #seconds,
+.countdown .time .semicolon {
+	font-size: 40px;
+	line-height: 50px;
+	text-align: center;
+}
+}
+
+.countdown .time span {
+font-family: Samsung Sharp Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 15px;
+text-align: center;
+letter-spacing: 0.3px;
+align-self: center;
+}
+
+.countdown .semicolon {
+margin-right: 16px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+font-family: Samsung Sharp Sans;
+font-style: normal;
+font-weight: bold;
+letter-spacing: 0.3px;
+}
+
+@media only screen and (min-width: 1024px) {
+.countdown .semicolon {
+	font-size: 40px;
+	line-height: 30px;
+}
+}
+
+@media only screen and (max-width: 1024px) {
+.countdown .semicolon {
+	font-size: 40px;
+	line-height: 50px;
+	text-align: center;
+}
 }

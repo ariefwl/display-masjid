@@ -39,6 +39,48 @@
 		$i++;
 	}
 	// print_r($files);die;
+
+	// tanggal hijriyah
+	function makeInt($angka){
+		if ($angka < -0.0000001){
+		  return ceil($angka-0.0000001);
+		}else { 
+		  return floor($angka+0.0000001); 
+		}
+	  }
+	   
+	function konvhijriah($tanggal){
+		$array_bulan = array("Muharram", "Safar", "Rabiul Awwal", "Rabiul Akhir",
+					"Jumadil Awwal","Jumadil Akhir", "Rajab", "Sya'ban", 
+					"Ramadhan","Syawwal", "Zulqaidah", "Zulhijjah");
+	   
+		$date = makeInt(substr($tanggal,8,2));
+		$month = makeInt(substr($tanggal,5,2));
+		$year = makeInt(substr($tanggal,0,4));
+	   
+		if (($year>1582)||(($year == "1582") && ($month > 10))||(($year == "1582") && ($month=="10")&&($date >14))){
+			$jd = makeInt((1461*($year+4800+makeInt(($month-14)/12)))/4)+
+			makeInt((367*($month-2-12*(makeInt(($month-14)/12))))/12)-
+			makeInt( (3*(makeInt(($year+4900+makeInt(($month-14)/12))/100))) /4)+
+			$date-32075; 
+		} else{
+			$jd = 367*$year-makeInt((7*($year+5001+makeInt(($month-9)/7)))/4)+
+			makeInt((275*$month)/9)+$date+1729777;
+		}
+	   
+		$wd = $jd%7;
+		$l = $jd-1948440+10632;
+		$n=makeInt(($l-1)/10631);
+		$l=$l-10631*$n+354;
+		$z=(makeInt((10985-$l)/5316))*(makeInt((50*$l)/17719))+(makeInt($l/5670))*(makeInt((43*$l)/15238));
+		$l=$l-(makeInt((30-$z)/15))*(makeInt((17719*$z)/50))-(makeInt($z/16))*(makeInt((15238*$z)/43))+29;
+		$m=makeInt((24*$l)/709);
+		$d=$l-makeInt((709*$m)/24);
+		$y=30*$n+$z-30;
+		$g = $m-1;
+		$final = "$d $array_bulan[$g] $y H.";
+		return $final;
+	}
 ?>
 
 
@@ -48,7 +90,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Display|Masjid</title>
+    <title>Masjid Al - Istiqomah</title>
     <link rel="icon" type="image/png" href="../icon.png"/>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -88,9 +130,12 @@
 	
 	
 	<div id="left-container">
+	    <div id="logo" style="background-image: url(logo/<?=$logo?>);"></div>
 		<div id="jam"></div>
 		<div id="tgl"></div>
+		<div id="hij"><?php echo konvhijriah(date('Y-m-d H:i:s')); ?></div>
 		<div id="jadwal"></div>
+		<div id="countRamadhan"></div>
 	</div>
 	
 	<div id="right-counter" style="display:none">
@@ -165,6 +210,7 @@
     <script src="js/PrayTimes.js"></script>
     <script src="js/jquery.marquee.js"></script>
     <script>
+		// app.countDownRamadhan();
 		<?php //Biar nggak ke load di HTML
 		// loader 
 		// $(window).on('load', function(){ // makes sure the whole site is loaded
@@ -275,6 +321,7 @@
 				// app.runFullCountDown(testTime,'TEST COUNTER',false);
 				// app.showDisplayAdzan('Dzuhur');
 				// app.showDisplayKhutbah();
+				app.countDownRamadhan();
 			},
 			cekPerDetik	: function(){
 				if(!app.tglHariIni || moment().format('YYYY-MM-DD') != moment(app.tglHariIni).format('YYYY-MM-DD')){
@@ -362,6 +409,51 @@
 					jadwal += '<div class="row '+css+'"><div class="col-xs-5">'+v+'</div><div class="col-xs-7">'+jadwalDipake[k] + jadwalPlusIcon + '</div></div>';
 				});
 				$('#jadwal').html(jadwal);
+			},
+			countDownRamadhan : function(){
+				var countDownDate = new Date("Mar 1, 2025 18:00:00").getTime();
+				let ramadhan = '';
+
+				var x = setInterval(function () {
+					var now = new Date().getTime();
+
+					var distance = countDownDate - now;
+
+					var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+					var hours = Math.floor(
+					(distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+					);
+					var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+					var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+					var textDays = document.getElementById("days");
+					var textHours = document.getElementById("hours");
+					var textMinutes = document.getElementById("minutes");
+					var textSeconds = document.getElementById("seconds");
+
+					textDays.innerHTML = days < 10 ? "0" + days : days;
+					textHours.innerHTML = hours < 10 ? "0" + hours : hours;
+					textMinutes.innerHTML = minutes < 10 ? "0" + minutes : minutes;
+					textSeconds.innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+					if (distance < 0) {
+					clearInterval(x);
+					}
+				}, 1000);
+				ramadhan += '<div class="countdown">' +
+				            '<div class="time"><span id="days">00</span><span>hari</span></div>' +
+							'<div class="semicolon">:</div>' +
+				            '<div class="time"><span id="hours">00</span><span>jam</span></div>' +
+							'<div class="semicolon">:</div>' +
+				            '<div class="time"><span id="minutes">00</span><span>menit</span></div>' +
+							'<div class="semicolon">:</div>' +
+				            '<div class="time"><span id="seconds">00</span><span>detik</span></div>' +
+				            '</div>' +
+							'<div id="ramadhan">Menuju Ramadhan</div>';
+				// ramadhan += '<div><span id="days" style="color: yellow;font-size: 20px;">00</span></div> '+
+				//             '<div style="color: yellow;font-size: 20px;">:</div>' +
+				// 			'<div><span id="hours" style="color: yellow;font-size: 20px;">00</span></div> ';
+				$('#countRamadhan').html(ramadhan);
 			},
 			displaySchedule: function(){
 				// console.log(app.getNextPray());
