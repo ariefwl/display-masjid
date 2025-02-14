@@ -322,6 +322,7 @@ Image credits: unsplash.com
 	box-shadow: 0 0 20vw 20vw rgba(0,0,0,0.7);
 	/* background-image: url(../img/bg-pattern-01.png); */
 }
+
 #left-container:before{
 	display: block;
 	content: "";
@@ -340,7 +341,7 @@ Image credits: unsplash.com
 	line-height: 0.8;
 	/* background:#F00; */
 	text-align: center;
-	margin:10vh 0 0 0;
+	margin:6vh 0 0 0;
 	padding:0 4vw 1vw 0;
 	/* font-family: 'OpenSansCondLight', Impact,'Times New Roman', Helvetica, Arial, sans-serif;  */
 	font-weight:bold;
@@ -360,11 +361,6 @@ Image credits: unsplash.com
 	font-family: 'Titillium Web', Helvetica, Arial, sans-serif;  
 	border-left: 0.7px solid rgba(255,255,255,0.6);
 	/* padding-left: 1.1vw; */
-}
-#ramadhan{
-	text-align: center;
-	color: #e2ad00;
-	font-size: 2vw;
 }
 #tgl{
 	text-align: center;
@@ -397,6 +393,7 @@ Image credits: unsplash.com
 	background-size: contain;
 	background-position: center center;
 	background-repeat: no-repeat;
+	/* background-color: red; */
 }
 /* #tgl:after{
 	display: block;
@@ -550,9 +547,6 @@ Image credits: unsplash.com
 	display: block;
 	border-radius: 1vh;
 }
-
-
-
 #right-container{
 	position:fixed;
 	top:0;
@@ -617,7 +611,6 @@ Image credits: unsplash.com
 	font-size: 2.1vw;
 	white-space: nowrap;
 }
-
 
 /* @keyframes scroll-left { */
 	/* 0% { */
@@ -723,17 +716,35 @@ Image credits: unsplash.com
 }
 
 /* countDownRamadhan */
+#ramadhan{
+	font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+	position: fixed;
+	right: 3vw;
+	bottom: 8vw;
+	text-align: center;
+	color: #e2ad00;
+	font-size: 2vw;
+	font-weight: bold;
+}
 .countdown {
-margin-bottom: 10px;
-display: flex;
-flex-direction: row;
-justify-content: center;
-color: #e2ad00;
+	font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+	/* margin-bottom: 10px; */
+	display: flex;
+	flex-direction: row;
+	position: fixed;
+	padding: 10px 10px 45px 10px; 
+	right: 2vw;
+	bottom: 8vw;
+	/* background-color: transparent; */
+	/* border-style: solid; */
+	/* border-color: #e2ad00; */
+	/* border-radius: 15px;  */
+	color: #e2ad00;
 }
 
 @media only screen and (max-width: 1024px) {
 .countdown {
-	justify-content: center;
+	position: relative;
 }
 }
 
@@ -752,7 +763,7 @@ margin-right: 16px;
 .countdown .time #minutes,
 .countdown .time #seconds,
 .countdown .time .semicolon {
-font-family: Samsung Sharp Sans;
+font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
 font-style: normal;
 font-weight: bold;
 letter-spacing: 0.3px;
@@ -765,6 +776,7 @@ letter-spacing: 0.3px;
 .countdown .time #minutes,
 .countdown .time #seconds,
 .countdown .time .semicolon {
+	font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
 	font-size: 45px;
 	line-height: 40px;
 }
@@ -784,10 +796,10 @@ letter-spacing: 0.3px;
 }
 
 .countdown .time span {
-font-family: Samsung Sharp Sans;
+font-family: 'Titillium Web', Helvetica, Arial, sans-serif;  
 font-style: normal;
-font-weight: normal;
-font-size: 12px;
+font-weight: bold;
+font-size: 14px;
 line-height: 15px;
 text-align: center;
 letter-spacing: 0.3px;
@@ -799,7 +811,7 @@ margin-right: 16px;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-font-family: Samsung Sharp Sans;
+font-family: 'Titillium Web', Helvetica, Arial, sans-serif;  
 font-style: normal;
 font-weight: bold;
 letter-spacing: 0.3px;

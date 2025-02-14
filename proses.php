@@ -397,39 +397,39 @@ class proses extends fb{
 			$delBtn	= is_int($k)?'<button type="button" class="btn btn-danger delete"><i class="fa fa-trash" aria-hidden="true"></i> hapus</button>':'';
 			?>
 			<form method="post" class="form">
-			<div class="box box-info">
-				<div class="box-header with-border">
-					<h3 class="box-title"><?=$title?></h3>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title"><?=$title?></h3>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="input-group">
+						<span class="input-group-addon">Header</span>
+						<input name="r1" type="text" maxlength="100" class="form-control" value="<?=$v[0]?>" required>
+						</div>
+						<div class="input">
+						<textarea name="r2" maxlength="255" rows="3" class="form-control" ><?=$v[1]?></textarea>
+						</div>
+						<div class="input-group">
+						<span class="input-group-addon">Footer</span>
+						<input name="r3" type="text" maxlength="100" class="form-control" value="<?=$v[2]?>" placeholder="boleh dikosongkan">
+						</div>
+						<div class="input-group">
+						<span class="input-group-addon">Aktif</span>
+						<select name="active" class="form-control  input-sm" required><?=$optActive?></select>
+						</div>
+						<div class="form-group">
+							<input type="hidden" name="formId" value="<?=$id?>">
+							<input type="hidden" name="index" value="<?=$k?>">
+						</div>
+					</div>
+					<div class="box-footer">
+						<?=$delBtn?>
+						<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> simpan</button>
 					</div>
 				</div>
-				<div class="box-body">
-					<div class="input-group">
-					  <span class="input-group-addon">Header</span>
-					  <input name="r1" type="text" maxlength="100" class="form-control" value="<?=$v[0]?>" required>
-					</div>
-					<div class="input">
-					  <textarea name="r2" maxlength="255" rows="3" class="form-control" ><?=$v[1]?></textarea>
-					</div>
-					<div class="input-group">
-					  <span class="input-group-addon">Footer</span>
-					  <input name="r3" type="text" maxlength="100" class="form-control" value="<?=$v[2]?>" placeholder="boleh dikosongkan">
-					</div>
-					<div class="input-group">
-					  <span class="input-group-addon">Aktif</span>
-					  <select name="active" class="form-control  input-sm" required><?=$optActive?></select>
-					</div>
-					<div class="form-group">
-						<input type="hidden" name="formId" value="<?=$id?>">
-						<input type="hidden" name="index" value="<?=$k?>">
-					</div>
-				</div>
-				<div class="box-footer">
-					<?=$delBtn?>
-					<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> simpan</button>
-				</div>
-			</div>
 			</form>
 			<?php
 		}
@@ -451,31 +451,31 @@ class proses extends fb{
 		?>
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<form method="post" class="form-file" enctype="multipart/form-data">
-			<div class="box box-info">
-				<div class="box-header with-border">
-					<h3 class="box-title">Tambah wallpaper</h3>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title">Tambah wallpaper</h3>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="input-group">
+						<span class="input-group-addon">File wallpaper</span>
+						<input type="file" multiple="" class="form-control input-sm" placeholder="" data-proses="saveWallpaper">
+						</div>
+						<div class="input">
+							<small>
+							- Ext file yang didukung :  <b>.jpg</b><br>
+							- Ukuran maksimal <b>2Mb</b><br>
+							- Maksimal 5 file dalam sekali upload<br>
+							- Tips : Jika ukuran gambar > 2Mb, cara cepat kompres gambar ⇒ kirim ke whatsapp :P
+							</small>
+						</div>
+					</div>
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-upload" aria-hidden="true"></i> upload</button>
 					</div>
 				</div>
-				<div class="box-body">
-					<div class="input-group">
-					  <span class="input-group-addon">File wallpaper</span>
-					  <input type="file" multiple="" class="form-control input-sm" placeholder="" data-proses="saveWallpaper">
-					</div>
-					<div class="input">
-						<small>
-						- Ext file yang didukung :  <b>.jpg</b><br>
-						- Ukuran maksimal <b>2Mb</b><br>
-						- Maksimal 5 file dalam sekali upload<br>
-						- Tips : Jika ukuran gambar > 2Mb, cara cepat kompres gambar ⇒ kirim ke whatsapp :P
-						</small>
-					</div>
-				</div>
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-upload" aria-hidden="true"></i> upload</button>
-				</div>
-			</div>
 			</form>
 		</div>
 		<?php
@@ -510,27 +510,27 @@ class proses extends fb{
 			$delBtn	= is_int($k)?'<button type="button" class="btn btn-danger delete"><i class="fa fa-trash" aria-hidden="true"></i> hapus</button>':'';
 			?>
 			<form method="post" class="form">
-			<div class="box box-info">
-				<div class="box-header with-border">
-					<h3 class="box-title"><?=$title?></h3>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title"><?=$title?></h3>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="input">
+						<textarea name="text" maxlength="255" rows="3" class="form-control" required><?=$v?></textarea>
+						</div>
+						<div class="input">
+							<input type="hidden" name="formId" value="<?=$id?>">
+							<input type="hidden" name="index" value="<?=$k?>">
+						</div>
+					</div>
+					<div class="box-footer">
+						<?=$delBtn?>
+						<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> simpan</button>
 					</div>
 				</div>
-				<div class="box-body">
-					<div class="input">
-					  <textarea name="text" maxlength="255" rows="3" class="form-control" required><?=$v?></textarea>
-					</div>
-					<div class="input">
-						<input type="hidden" name="formId" value="<?=$id?>">
-						<input type="hidden" name="index" value="<?=$k?>">
-					</div>
-				</div>
-				<div class="box-footer">
-					<?=$delBtn?>
-					<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> simpan</button>
-				</div>
-			</div>
 			</form>
 			<?php
 		}
@@ -703,12 +703,12 @@ class proses extends fb{
 					<br><br>
 					Contoh penggunaan untuk kota bekasi mengkuti metode kemenag bekasi :
 					<pre>
-latitude	= -6.14
-longitude	= 106.59
-timeZone	= 7 (GMT +7)
-fajr		= 20°
-asr		= Standard (Shafii, Maliki, Jafari and Hanbali / shadow factor = 1)
-isha		= 18°
+						latitude	= -6.14
+						longitude	= 106.59
+						timeZone	= 7 (GMT +7)
+						fajr		= 20°
+						asr		= Standard (Shafii, Maliki, Jafari and Hanbali / shadow factor = 1)
+						isha		= 18°
 					</pre>
 					<small>Default aplikasi ini menggunakan setting <b>bekasi - jawa barat - indonesia</b> dengan metode seperti diatas</small>
 				  </div>
@@ -961,36 +961,36 @@ isha		= 18°
 			</div>
 				
 			<form method="post" class="form">
-			<div class="box box-warning">
-				<div class="box-header with-border">
-					<h3 class="box-title">Metode</h3>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-					</div>
-				</div>
-				<div class="box-body">
-					<div class="input">
-						<select class="form-control" name="prayTimesMethod" id="prayTimesMethod">
-							<?=$this->generateOptionSelect($method,$arrMethod,false)?>
-						</select>
-					</div>
-					<div id="prayTimesAdjust" style="display:none">
-						<?=$this->formPrayTimesAdjust($adjust) ?>
-						<div class="form-group">
-							<small>
-								- Lihat manual parameter (diatas) untuk cara pengisian.<br>
-								- Parameter <b>case sensitive</b> (contoh : <b>Standard</b> tidak sama dengan <b>standard</b>)<br>
-								- Jika dikosongkan maka akan diisi default.
-							</small>
-							<input type="hidden" name="formId" value="prayTimesAdjust">
-							<input type="hidden" name="index" value="no-index">
+				<div class="box box-warning">
+					<div class="box-header with-border">
+						<h3 class="box-title">Metode</h3>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 						</div>
 					</div>
+					<div class="box-body">
+						<div class="input">
+							<select class="form-control" name="prayTimesMethod" id="prayTimesMethod">
+								<?=$this->generateOptionSelect($method,$arrMethod,false)?>
+							</select>
+						</div>
+						<div id="prayTimesAdjust" style="display:none">
+							<?=$this->formPrayTimesAdjust($adjust) ?>
+							<div class="form-group">
+								<small>
+									- Lihat manual parameter (diatas) untuk cara pengisian.<br>
+									- Parameter <b>case sensitive</b> (contoh : <b>Standard</b> tidak sama dengan <b>standard</b>)<br>
+									- Jika dikosongkan maka akan diisi default.
+								</small>
+								<input type="hidden" name="formId" value="prayTimesAdjust">
+								<input type="hidden" name="index" value="no-index">
+							</div>
+						</div>
+					</div>
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> simpan</button>
+					</div>
 				</div>
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> simpan</button>
-				</div>
-			</div>
 			</form>
 		<?php
 		
@@ -1082,33 +1082,33 @@ isha		= 18°
 		';
 		?>
 		<form method="post" class="form-file" enctype="multipart/form-data">
-		<div class="box box-success ">
-			<div class="box-header with-border">
-				<h3 class="box-title">Logo</h3>
-				<div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+			<div class="box box-success ">
+				<div class="box-header with-border">
+					<h3 class="box-title">Logo</h3>
+					<div class="box-tools pull-right">
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+					</div>
+				</div>
+				<div class="box-body" style="background-image: url(dist/img/bgTransparent.jpg);">
+					<img class="img-responsive pad" src="display/logo/<?=$this->getLogo();?>" style="border:2px dashed #F00;padding:0">
+				</div>
+				<div class="box-body">
+					<div class="input-group">
+					<span class="input-group-addon">File logo</span>
+					<input type="file" class="form-control input-sm" placeholder="" data-proses="saveLogo">
+					</div>
+					<div class="input">
+						<small>
+						- Ext file yang didukung :  <b>.png</b><br>
+						- Ukuran maksimal <b>2Mb</b><br>
+						- Tips : jika logo tampil terlalu besar pada display, edit gambar pada image editor (contoh : photoshop) dan beri jarak kosong pada atas-bawah atau kiri-kanan gambar
+						</small>
+					</div>
+				</div>
+				<div class="box-footer">
+					<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-upload" aria-hidden="true"></i> upload</button>
 				</div>
 			</div>
-			<div class="box-body" style="background-image: url(dist/img/bgTransparent.jpg);">
-				<img class="img-responsive pad" src="display/logo/<?=$this->getLogo();?>" style="border:2px dashed #F00;padding:0">
-			</div>
-			<div class="box-body">
-				<div class="input-group">
-				  <span class="input-group-addon">File logo</span>
-				  <input type="file" class="form-control input-sm" placeholder="" data-proses="saveLogo">
-				</div>
-				<div class="input">
-					<small>
-					- Ext file yang didukung :  <b>.png</b><br>
-					- Ukuran maksimal <b>2Mb</b><br>
-					- Tips : jika logo tampil terlalu besar pada display, edit gambar pada image editor (contoh : photoshop) dan beri jarak kosong pada atas-bawah atau kiri-kanan gambar
-					</small>
-				</div>
-			</div>
-			<div class="box-footer">
-				<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-upload" aria-hidden="true"></i> upload</button>
-			</div>
-		</div>
 		</form>
 		<?php
 		

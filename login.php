@@ -29,11 +29,13 @@ if (file_exists($file)){
 	<link rel="stylesheet" href="dist/css/bootstrap-datetimepicker.css">
 	<link rel="stylesheet" href="dist/css/datatables.min.css">
 	<link rel="stylesheet" href="dist/css/buttons.dataTables.min.css">
+	<link rel="stylesheet" href="display/css/style.css">
 </head>
 <body class="hold-transition login-page">
 	<div class="login-box">
 	  <div class="login-logo">
-		<a><b>Display</b>|Masjid</a>
+		<!-- <a><b>Display</b>|Masjid</a> -->
+		<img style="height: 30vh;" src="display/logo/1738810061.png" alt="" srcset="">
 	  </div>
 	  <div class="login-box-body">
 		<h4 class="login-box-msg" style="border-bottom:0.7px solid #ccc;padding:5px 0">Halaman login - <?=$name?></h4>

@@ -135,7 +135,6 @@
 		<div id="tgl"></div>
 		<div id="hij"><?php echo konvhijriah(date('Y-m-d H:i:s')); ?></div>
 		<div id="jadwal"></div>
-		<div id="countRamadhan"></div>
 	</div>
 	
 	<div id="right-counter" style="display:none">
@@ -147,32 +146,33 @@
 		</div>
 	</div>
 	<div id="right-container">
+		<div id="countRamadhan"></div>
 		<div id="quote">
 			<div class="carousel quote-carousel slide" data-ride="carousel" data-interval="<?=$info_timer?>" data-pause="null">
-			  <div class="carousel-inner">
-				<?php 
-				$i=0;
-				foreach($db['info'] as $k => $v){
-					if($v[3]){
-						echo '
-						<div class="item slides '.($i==0?'active':'').'">
-						  <div class="hero">        
-							<hgroup>
-								<div class="text1">'.htmlentities($v[0]).'</div>        
-								<div class="text2">'.nl2br(htmlentities($v[1])).'</div>        
-								<div class="text3">'.htmlentities($v[2]).'</div>
-							</hgroup>
-						  </div>
-						</div>
-						';
-						$i++;
+				<div class="carousel-inner">
+					<?php 
+					$i=0;
+					foreach($db['info'] as $k => $v){
+						if($v[3]){
+							echo '
+							<div class="item slides '.($i==0?'active':'').'">
+							<div class="hero">        
+								<hgroup>
+									<div class="text1">'.htmlentities($v[0]).'</div>        
+									<div class="text2">'.nl2br(htmlentities($v[1])).'</div>        
+									<div class="text3">'.htmlentities($v[2]).'</div>
+								</hgroup>
+							</div>
+							</div>
+							';
+							$i++;
+						}
 					}
-				}
-				?>
-			  </div> 
+					?>
+				</div> 
 			</div>
 		</div>
-		<div id="logo" style="background-image: url(logo/<?=$logo?>);"></div>
+		<!-- <div id="logo" style="background-image: url(logo/<?=$logo?>);"></div> -->
 		<div id="running-text">
 			<div class="item">
 				<!-- <div class="text"> -->
@@ -303,10 +303,12 @@
 			nextPrayCount	: 0,		// start next pray count-down
 			// nextPrayTimer	: false,	// Display countdown ke sholat selanjutnya
 			fajr	: '',
+			sunrise	: '',
 			dhuhr	: '',
 			asr		: '',
 			maghrib	: '',
 			isha	: '',
+			imsak	: '',
 			audio	: new Audio('img/beep.mp3'),
 			
 			initialize	: function(){
@@ -333,12 +335,14 @@
 					app.jadwalBesok		= app.getJadwal(moment(app.tglBesok).toDate());
 					// console.log(app.jadwalHariIni);
 					// console.log(app.jadwalBesok);
-					app.fajr	= moment(app.jadwalHariIni.fajr,'HH:mm');
+					app.fajr	= moment(app.jadwalHariIni.fajr,'HH:mm:ss');
+					app.sunrise	= moment(app.jadwalHariIni.sunrise,'HH:mm');
 					app.dhuhr	= moment(app.jadwalHariIni.dhuhr,'HH:mm');
 					app.asr		= moment(app.jadwalHariIni.asr,'HH:mm');
 					app.maghrib	= moment(app.jadwalHariIni.maghrib,'HH:mm');
 					app.isha	= moment(app.jadwalHariIni.isha,'HH:mm');
 					// console.log('fajr : '+app.fajr.format('YYYY-MM-DD HH:mm:ss'));
+					// console.log('dhuha : '+app.sunrise.format('YYYY-MM-DD HH:mm:ss'));
 					// console.log('dhuhr : '+app.dhuhr.format('YYYY-MM-DD HH:mm:ss'));
 					// console.log('asr : '+app.asr.format('YYYY-MM-DD HH:mm:ss'));
 					// console.log('maghrib : '+app.maghrib.format('YYYY-MM-DD HH:mm:ss'));
@@ -404,7 +408,8 @@
 					if		(k == 'isha' 	&& jamDelay < app.isha		&& jamDelay > app.maghrib) 	css= 'active';
 					else if	(k == 'maghrib' && jamDelay < app.maghrib	&& jamDelay > app.asr) 		css= 'active';
 					else if	(k == 'asr' 	&& jamDelay < app.asr		&& jamDelay > app.dhuhr) 	css= 'active';
-					else if	(k == 'dhuhr' 	&& jamDelay < app.dhuhr		&& jamDelay > app.fajr) 	css= 'active';
+					else if	(k == 'dhuhr' 	&& jamDelay < app.dhuhr		&& jamDelay > app.sunrise) 	css= 'active';
+					else if	(k == 'sunrise'	&& (jamDelay < app.sunrise	&& jamDelay > app.fajr))	css= 'active';
 					else if	(k == 'fajr'	&& (jamDelay < app.fajr		|| jamDelay > app.isha))	css= 'active';//diatas isha dan sebelum subuh (beda hari)
 					jadwal += '<div class="row '+css+'"><div class="col-xs-5">'+v+'</div><div class="col-xs-7">'+jadwalDipake[k] + jadwalPlusIcon + '</div></div>';
 				});
