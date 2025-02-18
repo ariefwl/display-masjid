@@ -130,7 +130,7 @@
 	
 	
 	<div id="left-container">
-	    <div id="logo" style="background-image: url(logo/<?=$logo?>);"></div>
+	    <div id="logo" style="background-image: url(logo/<?=$logo?>); height:10vw; right: 3vw; top: 1vw;"></div>
 		<div id="jam"></div>
 		<div id="tgl"></div>
 		<div id="hij"><?php echo konvhijriah(date('Y-m-d H:i:s')); ?></div>
@@ -416,7 +416,7 @@
 				$('#jadwal').html(jadwal);
 			},
 			countDownRamadhan : function(){
-				var countDownDate = new Date("Mar 1, 2025 18:00:00").getTime();
+				var countDownDate = new Date("Feb 28, 2025 17:58:00").getTime();
 				let ramadhan = '';
 
 				var x = setInterval(function () {

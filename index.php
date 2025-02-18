@@ -120,7 +120,7 @@ if (file_exists($file)){
   <header class="main-header">
     <a href="" class="logo" onclick="location.reload()">
       <span class="logo-mini">DM</span>
-      <span class="logo-lg"><b>Display</b>Masjid</span>
+      <span class="logo-lg"><b>Al - Istiqomah</b></span>
     </a>
     <nav class="navbar navbar-static-top">
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -162,9 +162,9 @@ if (file_exists($file)){
 	</div>
 	<footer class="main-footer">
 		<div class="pull-right">
-		  <b>Version</b> 1.0.0 (Feb 2020)
+		  <b>Version</b> 1.0.0 <?php echo date('M Y')?>
 		</div>
-		<strong>Display|Masjid</strong> Aplication
+		<strong>Al - Istiqomah</strong> <?php echo date('Y')?>. All Rights Reserved
 	</footer>
 	<!-- <script src="cordova.js"></script> -->
 	<script src="dist/js/jquery.min.js"></script>
