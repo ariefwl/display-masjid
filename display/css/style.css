@@ -376,7 +376,7 @@ Image credits: unsplash.com
 	text-align: center;
 	color:#FFF;
 	font-size:2vw;
-	margin: 0.8vh auto 7vw auto;
+	margin: 0.8vh auto 4vw auto;
 	font-weight:bold;
 	position:relative;
 }
@@ -537,6 +537,7 @@ Image credits: unsplash.com
 	color:#FFF;
 	/* background:#f00; */
 }
+
 #right-counter .counter>div>span {
 	background:#e2ad00;
 	font-size:5vh;
@@ -547,6 +548,7 @@ Image credits: unsplash.com
 	display: block;
 	border-radius: 1vh;
 }
+
 #right-container{
 	position:fixed;
 	top:0;
@@ -555,6 +557,7 @@ Image credits: unsplash.com
 	left:26vw;
 	/* background-color:rgba(255,0,0,0.3) */
 }
+
 #running-text:before{
 	display: block;
 	content: "";
@@ -571,17 +574,21 @@ Image credits: unsplash.com
 	background-repeat: no-repeat;
 	
 }
+
 #running-text{
 	height:3.5vw;
 	width:70vw;
-	color:#fff;
+	color:#000000;
+	/* color:#fff; */
 	/* margin:3vh 3vw 4vh 3vw; */
-	background-color:rgba(51,204,204,0.2);
+	/* background-color:rgba(51,204,204,0.2); */
+	background-color: #ffffff;
 	position:fixed;
 	bottom:2vh;
 	/* bottom:4vh; */
 	right:2vw;
 	border-radius:5px;
+	font-weight: bold;
 	
 	/* right:30vw; */
 	/* overflow: hidden; */
@@ -594,11 +601,13 @@ Image credits: unsplash.com
 
 #running-text .item i{
 	color:#e2ad00;
+	/* color: #000000; */
 	margin-left: 20px;
 	margin-right: 7px;
 	font-size: 2vw;
-	
+	font-weight: bold;
 }
+
 #running-text .item{
 	position: absolute;
 	left: 5.5vw;
@@ -623,18 +632,20 @@ Image credits: unsplash.com
 
 
 #logo{
+	background-image: url(../logo/1739862268.png);
 	height:12vw;
-	width:70vw;
+	width:20vw;
 	/* margin:3vh 3vw 4vh 3vw; */
 	/* background-color: #f00; */
-	position:fixed;
+	position:relative;
+	top: 2vw;
+	left: 50vw;
 	/* bottom:-4vh; */
 	/* bottom:5.6vw; */
-	right:2vw;
-	/* background-color:#F00; */
+	/* right:1.1vw; */
 	/* background-image: url(../img/logo.png); */
 	background-size: contain;
-	background-position: right bottom;
+	/* background-position: right bottom; */
 	background-repeat: no-repeat;
 }
 
@@ -653,7 +664,7 @@ Image credits: unsplash.com
 .quote-carousel .carousel-inner .item .hero {
     color: #fff;
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 50%;
 	transform: translate(-50%,-50%);
     /* z-index: 3; */
@@ -717,7 +728,7 @@ Image credits: unsplash.com
 
 /* countDownRamadhan */
 #ramadhan{
-	font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+	font-family: Arial;
 	position: fixed;
 	right: 3vw;
 	bottom: 8vw;
@@ -728,6 +739,7 @@ Image credits: unsplash.com
 }
 .countdown {
 	font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+	font-weight: bold;
 	/* margin-bottom: 10px; */
 	display: flex;
 	flex-direction: row;
@@ -777,7 +789,7 @@ letter-spacing: 0.3px;
 .countdown .time #seconds,
 .countdown .time .semicolon {
 	font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
-	font-size: 45px;
+	font-size: 5vw;
 	line-height: 40px;
 }
 }
@@ -792,15 +804,16 @@ letter-spacing: 0.3px;
 	font-size: 40px;
 	line-height: 50px;
 	text-align: center;
+	font-weight: bold;
 }
 }
 
 .countdown .time span {
-font-family: 'Titillium Web', Helvetica, Arial, sans-serif;  
+font-family: sans-serif;  
 font-style: normal;
 font-weight: bold;
-font-size: 14px;
-line-height: 15px;
+font-size: 20px;
+line-height: 55px;
 text-align: center;
 letter-spacing: 0.3px;
 align-self: center;
@@ -827,6 +840,7 @@ letter-spacing: 0.3px;
 @media only screen and (max-width: 1024px) {
 .countdown .semicolon {
 	font-size: 40px;
+	font-weight: bold;
 	line-height: 50px;
 	text-align: center;
 }

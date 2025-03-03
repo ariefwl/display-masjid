@@ -130,7 +130,6 @@
 	
 	
 	<div id="left-container">
-	    <div id="logo" style="background-image: url(logo/<?=$logo?>); height:10vw; right: 3vw; top: 1vw;"></div>
 		<div id="jam"></div>
 		<div id="tgl"></div>
 		<div id="hij"><?php echo konvhijriah(date('Y-m-d H:i:s')); ?></div>
@@ -146,6 +145,10 @@
 		</div>
 	</div>
 	<div id="right-container">
+		<a href="../info/index.php">
+			<!-- <div id="logo" style="background-image: url(logo/<?=$logo?>); width:10vw; height:10vw; right: 3vw; top: 1vw; position: relative;"></div> -->
+			 <div id="logo"></div>
+		</a>
 		<div id="countRamadhan"></div>
 		<div id="quote">
 			<div class="carousel quote-carousel slide" data-ride="carousel" data-interval="<?=$info_timer?>" data-pause="null">
@@ -309,10 +312,13 @@
 			maghrib	: '',
 			isha	: '',
 			imsak	: '',
+			dhuha	: '',
 			audio	: new Audio('img/beep.mp3'),
 			
 			initialize	: function(){
 				app.timer	= setInterval(function(){app.cekPerDetik()},1000);
+				// Jalankan setiap 1 menit
+				// app.timer 	= setInterval(showRekap, 60000);
 				$('#preloader').delay(350).fadeOut('slow');
 				// console.log(app.db);
 				
@@ -323,7 +329,7 @@
 				// app.runFullCountDown(testTime,'TEST COUNTER',false);
 				// app.showDisplayAdzan('Dzuhur');
 				// app.showDisplayKhutbah();
-				app.countDownRamadhan();
+				// app.countDownRamadhan();
 			},
 			cekPerDetik	: function(){
 				if(!app.tglHariIni || moment().format('YYYY-MM-DD') != moment(app.tglHariIni).format('YYYY-MM-DD')){
@@ -333,23 +339,27 @@
 					// console.log(app.tglBesok);
 					app.jadwalHariIni	= app.getJadwal(moment(app.tglHariIni).toDate());
 					app.jadwalBesok		= app.getJadwal(moment(app.tglBesok).toDate());
-					// console.log(app.jadwalHariIni);
+					// console.log(app.jadwalHariIni.sunrise);
 					// console.log(app.jadwalBesok);
 					app.fajr	= moment(app.jadwalHariIni.fajr,'HH:mm:ss');
 					app.sunrise	= moment(app.jadwalHariIni.sunrise,'HH:mm');
+					// app.dhuha	= moment(app.sunrise).add(20, 'minutes');
 					app.dhuhr	= moment(app.jadwalHariIni.dhuhr,'HH:mm');
 					app.asr		= moment(app.jadwalHariIni.asr,'HH:mm');
 					app.maghrib	= moment(app.jadwalHariIni.maghrib,'HH:mm');
 					app.isha	= moment(app.jadwalHariIni.isha,'HH:mm');
 					// console.log('fajr : '+app.fajr.format('YYYY-MM-DD HH:mm:ss'));
-					// console.log('dhuha : '+app.sunrise.format('YYYY-MM-DD HH:mm:ss'));
+					// console.log('syuruq : '+app.sunrise.format('YYYY-MM-DD HH:mm:ss'));
 					// console.log('dhuhr : '+app.dhuhr.format('YYYY-MM-DD HH:mm:ss'));
 					// console.log('asr : '+app.asr.format('YYYY-MM-DD HH:mm:ss'));
 					// console.log('maghrib : '+app.maghrib.format('YYYY-MM-DD HH:mm:ss'));
 					// console.log('isha : '+app.isha.format('YYYY-MM-DD HH:mm:ss'));
+					// console.log('Subuh : '+app.fajr);
+					// console.log('Dhuha : '+app.dhuha);
 				}
 				app.showJadwal();
 				app.displaySchedule();
+				app.showRekap();
 				// app.showCountDownNextPray();
 				// app.runRightCountDown(app.dhuhr,'Dzuhur');
 				
@@ -369,6 +379,16 @@
 			},
 			getJadwal	: function(jadwalDate){
 				let times = prayTimes.getTimes(jadwalDate, [lat, lng], timeZone, dst, format);
+
+				// Konversi waktu sunrise ke dalam format Date
+				let sunriseTime = moment(times.sunrise, "HH:mm"); 
+
+				// Tambahkan 20 menit untuk waktu Dhuha
+				let dhuhaTime = sunriseTime.add(20, "minutes").format("HH:mm"); 
+
+				// Tambahkan waktu Dhuha ke dalam objek times
+				times.dhuha = dhuhaTime;
+
 				return times;
 			},
 			showJadwal	: function(){
@@ -404,19 +424,21 @@
 				}
 				$.each(app.db.prayName, function(k,v) {
 					// console.log(jamDelay.format('YYYY-MM-DD HH:mm:ss'));
+					// console.log('Waktu dhuha : ' + app.dhuha);
 					let css= '';
 					if		(k == 'isha' 	&& jamDelay < app.isha		&& jamDelay > app.maghrib) 	css= 'active';
 					else if	(k == 'maghrib' && jamDelay < app.maghrib	&& jamDelay > app.asr) 		css= 'active';
 					else if	(k == 'asr' 	&& jamDelay < app.asr		&& jamDelay > app.dhuhr) 	css= 'active';
-					else if	(k == 'dhuhr' 	&& jamDelay < app.dhuhr		&& jamDelay > app.sunrise) 	css= 'active';
-					else if	(k == 'sunrise'	&& (jamDelay < app.sunrise	&& jamDelay > app.fajr))	css= 'active';
+					else if	(k == 'dhuhr' 	&& jamDelay < app.dhuhr		&& jamDelay > app.fajr) 	css= 'active';
+					else if	(k == 'dhuha'	&& jamDelay < app.dhuha		&& jamDelay > app.sunrise)	css= 'active';
+					// else if	(k == 'sunrise'	&& jamDelay < app.sunrise	&& jamDelay > app.fajr)	css= 'active';
 					else if	(k == 'fajr'	&& (jamDelay < app.fajr		|| jamDelay > app.isha))	css= 'active';//diatas isha dan sebelum subuh (beda hari)
 					jadwal += '<div class="row '+css+'"><div class="col-xs-5">'+v+'</div><div class="col-xs-7">'+jadwalDipake[k] + jadwalPlusIcon + '</div></div>';
 				});
 				$('#jadwal').html(jadwal);
 			},
 			countDownRamadhan : function(){
-				var countDownDate = new Date("Feb 28, 2025 17:58:00").getTime();
+				var countDownDate = new Date("Mar 31, 2025 17:44:00").getTime();
 				let ramadhan = '';
 
 				var x = setInterval(function () {
@@ -442,7 +464,10 @@
 					textSeconds.innerHTML = seconds < 10 ? "0" + seconds : seconds;
 
 					if (distance < 0) {
-					clearInterval(x);
+						clearInterval(x);
+						// $('#ramadhan').fadeOut();
+						// $('#countRamadhan').html('<div id="ramadhan">Marhaban Ya Ramadhan 1446 H.</div>');
+						return;
 					}
 				}, 1000);
 				ramadhan += '<div class="countdown">' +
@@ -454,10 +479,7 @@
 							'<div class="semicolon">:</div>' +
 				            '<div class="time"><span id="seconds">00</span><span>detik</span></div>' +
 				            '</div>' +
-							'<div id="ramadhan">Menuju Ramadhan</div>';
-				// ramadhan += '<div><span id="days" style="color: yellow;font-size: 20px;">00</span></div> '+
-				//             '<div style="color: yellow;font-size: 20px;">:</div>' +
-				// 			'<div><span id="hours" style="color: yellow;font-size: 20px;">00</span></div> ';
+							'<div id="ramadhan">Menuju 1 Syawal 1446 H.</div>';
 				$('#countRamadhan').html(ramadhan);
 			},
 			displaySchedule: function(){
@@ -502,7 +524,7 @@
 		
 				// let jamSekarang	= moment().add(5,'minutes');
 				// if (!app.countDownTimer) {
-					// app.runFullCountDown(jamSekarang,'IQOMAH');
+					// app.runFullCountDown(ja"dhuha":"Dhuha",mSekarang,'IQOMAH');
 				// }
 			},
 			getNextPray	: function(){
@@ -584,6 +606,7 @@
 					let duration		= (jamSekarang > app.isha && app.db.tarawih.active)?app.db.tarawih.duration:app.db.timer.sholat;
 					$('#display-sholat').show();
 					app.khutbahTimer	= setTimeout(function(){
+						//console.log("Timer selesai, menghilangkan #display-sholat");
 						$('#display-sholat').fadeOut();
 						app.khutbahTimer	= false;
 						app.showCountDownNextPray();
@@ -664,6 +687,23 @@
 					'minutes'	: minutes,
 					'seconds'	: seconds
 				};
+			},
+			
+			showRekap : function(){
+				let now = new Date();
+				let hours = now.getHours().toString().padStart(2, '0');
+				let minutes = now.getMinutes().toString().padStart(2, '0');
+
+				// Daftar jam pindah halaman (sesuaikan dengan kebutuhan)
+				let schedule = {
+					"19:45": "/info/index.php",
+				};
+
+				let currentTime = `${hours}:${minutes}`;
+
+				if (schedule[currentTime]) {
+					window.location.href = schedule[currentTime]; // Redirect ke halaman tujuan
+				}
 			}
 		}
 		app.initialize();
