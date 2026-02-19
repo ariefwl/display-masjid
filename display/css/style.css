@@ -26,11 +26,6 @@
 	url("../fonts/Arial/Arial.svg#Arial") format("svg"); /* iOS 4.1- */
 }
 
-
-
-
-
-
 * { box-sizing: border-box; }
 
 body {
@@ -664,7 +659,7 @@ Image credits: unsplash.com
 .quote-carousel .carousel-inner .item .hero {
     color: #fff;
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 50%;
 	transform: translate(-50%,-50%);
     /* z-index: 3; */
@@ -727,16 +722,28 @@ Image credits: unsplash.com
 }
 
 /* countDownRamadhan */
-#ramadhan{
+#syawal{
 	font-family: Arial;
 	position: fixed;
-	right: 3vw;
+	right: 46vw;
 	bottom: 8vw;
 	text-align: center;
 	color: #e2ad00;
 	font-size: 2vw;
 	font-weight: bold;
 }
+
+#countDown{
+	font-family: 'Titillium Web';
+	position: fixed;
+	right: 2vw;
+	bottom: 4.5vw;
+	text-align: right;
+	color: yellow;
+	font-size: 2.5vw;
+	font-weight: bold;
+}
+
 .countdown {
 	font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
 	font-weight: bold;
@@ -745,7 +752,7 @@ Image credits: unsplash.com
 	flex-direction: row;
 	position: fixed;
 	padding: 10px 10px 45px 10px; 
-	right: 2vw;
+	right: 40vw;
 	bottom: 8vw;
 	/* background-color: transparent; */
 	/* border-style: solid; */

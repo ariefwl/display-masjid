@@ -39,48 +39,6 @@
 		$i++;
 	}
 	// print_r($files);die;
-
-	// tanggal hijriyah
-	function makeInt($angka){
-		if ($angka < -0.0000001){
-		  return ceil($angka-0.0000001);
-		}else { 
-		  return floor($angka+0.0000001); 
-		}
-	  }
-	   
-	function konvhijriah($tanggal){
-		$array_bulan = array("Muharram", "Safar", "Rabiul Awwal", "Rabiul Akhir",
-					"Jumadil Awwal","Jumadil Akhir", "Rajab", "Sya'ban", 
-					"Ramadhan","Syawwal", "Zulqaidah", "Zulhijjah");
-	   
-		$date = makeInt(substr($tanggal,8,2));
-		$month = makeInt(substr($tanggal,5,2));
-		$year = makeInt(substr($tanggal,0,4));
-	   
-		if (($year>1582)||(($year == "1582") && ($month > 10))||(($year == "1582") && ($month=="10")&&($date >14))){
-			$jd = makeInt((1461*($year+4800+makeInt(($month-14)/12)))/4)+
-			makeInt((367*($month-2-12*(makeInt(($month-14)/12))))/12)-
-			makeInt( (3*(makeInt(($year+4900+makeInt(($month-14)/12))/100))) /4)+
-			$date-32075; 
-		} else{
-			$jd = 367*$year-makeInt((7*($year+5001+makeInt(($month-9)/7)))/4)+
-			makeInt((275*$month)/9)+$date+1729777;
-		}
-	   
-		$wd = $jd%7;
-		$l = $jd-1948440+10632;
-		$n=makeInt(($l-1)/10631);
-		$l=$l-10631*$n+354;
-		$z=(makeInt((10985-$l)/5316))*(makeInt((50*$l)/17719))+(makeInt($l/5670))*(makeInt((43*$l)/15238));
-		$l=$l-(makeInt((30-$z)/15))*(makeInt((17719*$z)/50))-(makeInt($z/16))*(makeInt((15238*$z)/43))+29;
-		$m=makeInt((24*$l)/709);
-		$d=$l-makeInt((709*$m)/24);
-		$y=30*$n+$z-30;
-		$g = $m-1;
-		$final = "$d $array_bulan[$g] $y H.";
-		return $final;
-	}
 ?>
 
 
@@ -96,9 +54,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-	<style>
-		
-	</style>
 </head>
 
 <body>
@@ -132,7 +87,7 @@
 	<div id="left-container">
 		<div id="jam"></div>
 		<div id="tgl"></div>
-		<div id="hij"><?php echo konvhijriah(date('Y-m-d H:i:s')); ?></div>
+		<div id="hij"></div>
 		<div id="jadwal"></div>
 	</div>
 	
@@ -145,11 +100,11 @@
 		</div>
 	</div>
 	<div id="right-container">
-		<a href="../info/index.php">
-			<!-- <div id="logo" style="background-image: url(logo/<?=$logo?>); width:10vw; height:10vw; right: 3vw; top: 1vw; position: relative;"></div> -->
+		<a href="../Makkah/index.php">
 			 <div id="logo"></div>
 		</a>
-		<div id="countRamadhan"></div>
+		<div id="countSyawal"></div>
+		<!-- <div style="color: yellow; font-size: 5vh; font-weight: bold;" id="hijriyah"></div> -->
 		<div id="quote">
 			<div class="carousel quote-carousel slide" data-ride="carousel" data-interval="<?=$info_timer?>" data-pause="null">
 				<div class="carousel-inner">
@@ -175,33 +130,34 @@
 				</div> 
 			</div>
 		</div>
-		<!-- <div id="logo" style="background-image: url(logo/<?=$logo?>);"></div> -->
+		
+		<div id="countDown"></div>
 		<div id="running-text">
 			<div class="item">
 				<!-- <div class="text"> -->
 				<marquee>
-				<?php 
-					foreach($db['running_text'] as $k => $v){
-						echo '<i class="fa fa-square-o" aria-hidden="true"></i> '.htmlentities($v);
-					}
-					// $ip 	= gethostbyname(php_uname('n'));	// PHP < 5.3.0
-					$ip 	= gethostbyname(gethostname());		// PHP >= 5.3.0 ==> di linux keluar 127.0.0.1
-					if(PHP_OS=='Linux'){
-						//raspi 3
-						// $command="/sbin/ifconfig wlan0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'";//raspi pake wlan0 jadi hotspot
-						// $ip = exec ($command);
-						
-						//raspi 4
-						$command="/sbin/ifconfig wlan0 | grep 'inet '| cut -d 't' -f2 | cut -d 'n' -f1 | awk '{ print $1}'";//raspi pake wlan0 jadi hotspot
-						$ip = trim(exec ($command));
-					}
-					if($db['akses']['pass']=='admin'){
-						echo '<i class="fa fa-square-o" aria-hidden="true"></i> Konek ke wifi (SSID: DisplayMasjid, password: 12345678)';
-						echo '<i class="fa fa-square-o" aria-hidden="true"></i> Alamat admin http://'.$ip.'/';
-						echo '<i class="fa fa-square-o" aria-hidden="true"></i> Default akses user : admin, password : admin';
-						echo '<i class="fa fa-square-o" aria-hidden="true"></i> Silakan mengganti password admin untuk menghilangkan tulisan ini';
-					}
-				?>
+					<?php 
+						foreach($db['running_text'] as $k => $v){
+							echo '<i class="fa fa-square-o" aria-hidden="true"></i> '.htmlentities($v);
+						}
+						// $ip 	= gethostbyname(php_uname('n'));	// PHP < 5.3.0
+						// $ip 	= gethostbyname(gethostname());		// PHP >= 5.3.0 ==> di linux keluar 127.0.0.1
+						// if(PHP_OS=='Linux'){
+						// 	//raspi 3
+						// 	// $command="/sbin/ifconfig wlan0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'";//raspi pake wlan0 jadi hotspot
+						// 	// $ip = exec ($command);
+							
+						// 	//raspi 4
+						// 	$command="/sbin/ifconfig wlan0 | grep 'inet '| cut -d 't' -f2 | cut -d 'n' -f1 | awk '{ print $1}'";//raspi pake wlan0 jadi hotspot
+						// 	$ip = trim(exec ($command));
+						// }
+						// if($db['akses']['pass']=='admin'){
+						// 	echo '<i class="fa fa-square-o" aria-hidden="true"></i> Konek ke wifi (SSID: DisplayMasjid, password: 12345678)';
+						// 	echo '<i class="fa fa-square-o" aria-hidden="true"></i> Alamat admin http://'.$ip.'/';
+						// 	echo '<i class="fa fa-square-o" aria-hidden="true"></i> Default akses user : admin, password : admin';
+						// 	echo '<i class="fa fa-square-o" aria-hidden="true"></i> Silakan mengganti password admin untuk menghilangkan tulisan ini';
+						// }
+					?>
 				</marquee>
 				<!-- </div> -->
 			</div>
@@ -213,46 +169,6 @@
     <script src="js/PrayTimes.js"></script>
     <script src="js/jquery.marquee.js"></script>
     <script>
-		// app.countDownRamadhan();
-		<?php //Biar nggak ke load di HTML
-		// loader 
-		// $(window).on('load', function(){ // makes sure the whole site is loaded
-			//$('#status').fadeOut(); // will first fade out the loading animation
-			// $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
-			//$('body').delay(350).css({'overflow':'visible'});
-		// })
-
-		// moment.locale('id');
-		/*
-		Input		Example			Description
-		YYYY		2014			4 or 2 digit year
-		YY			14				2 digit year
-		Y			-25				Year with any number of digits and sign
-		Q			1..4			Quarter of year. Sets month to first month in quarter.
-		M MM		1..12			Month number
-		MMM MMMM	Jan..December	Month name in locale set by moment.locale()
-		D DD		1..31			Day of month
-		Do			1st..31st		Day of month with ordinal
-		DDD DDDD	1..365			Day of year
-		X			1410715640.579	Unix timestamp
-		x			1410715640579	Unix ms timestamp
-		ddd dddd	Mon...Sunday	Day name in locale set by moment.locale()
-
-		H HH		0..23			Hours (24 hour time)
-		h hh		1..12			Hours (12 hour time used with a A.)
-		k kk		1..24			Hours (24 hour time from 1 to 24)
-		a A			am pm			Post or ante meridiem (Note the one character a p are also considered valid)
-		m mm		0..59			Minutes
-		s ss		0..59			Seconds
-		S SS SSS	0..999			Fractional seconds
-		Z ZZ		+12:00			Offset from UTC as +-HH:mm, +-HHmm, or Z
-
-
-		*/
-		?>
-		
-		
-		
 		//PrayTimes initialize
 		var format 			= '24h';
 		<?php
@@ -290,6 +206,64 @@
 		
 		//Baris ini ke bawah jika inget nanti pindah ke file terpisah biar rapi......
 		
+		const countDown = {
+			hariBesar: {
+				'Isra` & Mi`raj': 'Jan 16, 2026',
+				'1 Ramadhan 1447 H.': 'Feb 19, 2026',
+				'1 Syawal 1447 H.': 'Mar 20, 2026',
+				'Idul Adha': 'May 27, 2026',
+				'1 Muharam 1448 H.': 'Jun 17, 2026',
+                'Maulid Nabi Muhammad SAW.': 'Aug 27, 2026'
+			},
+			index: 0,
+			keys: [],
+			start: function () {
+				const now = new Date();
+
+				// Filter hanya event yang tanggalnya masih di masa depan
+				for (const [key, dateStr] of Object.entries(this.hariBesar)) {
+					const date = new Date(dateStr);
+					if (date <= now) {
+						delete this.hariBesar[key];
+					}
+				}
+
+				this.keys = Object.keys(this.hariBesar);
+
+				if (this.keys.length === 0) {
+					document.getElementById('countDown').innerHTML = 'Tidak ada acara mendatang.';
+					return;
+				}
+
+				this.showSlide(); // tampil pertama kali
+				setInterval(() => this.showSlide(), 10000); // update tiap 10 detik
+			},
+			showSlide: function () {
+				const key = this.keys[this.index];
+				const targetDate = new Date(this.hariBesar[key]);
+				const now = new Date();
+				const distance = targetDate - now;
+
+				let output = `<strong>${key}</strong>   `;
+				if (distance > 0) {
+					const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+					// const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+					// const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+					// const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+					// output += `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
+					output += `${days} hari lagi`;
+				} else {
+					output += 'Selesai';
+				}
+
+				console.log(output);
+				document.getElementById('countDown').innerHTML = output;
+				this.index = (this.index + 1) % this.keys.length;
+			}
+		};
+
+		countDown.start();
+
 		var app	={
 			db	: $.parseJSON(`<?=stripslashes(str_replace("`","\\`",json_encode($showDb)))?>`),
 			cekDb	: false,
@@ -313,23 +287,34 @@
 			isha	: '',
 			imsak	: '',
 			dhuha	: '',
+			sholawat : new Audio('audio/tarhim.mp3'),
 			audio	: new Audio('img/beep.mp3'),
+			schedule: 	{
+							"05:00": "/Makkah/index.php",
+							"12:20": "/Makkah/index.php",
+							"15:35": "/Makkah/index.php",
+							"18:30": "/Makkah/index.php",
+							"19:35": "/Makkah/index.php",
+						},
 			
 			initialize	: function(){
 				app.timer	= setInterval(function(){app.cekPerDetik()},1000);
 				// Jalankan setiap 1 menit
 				// app.timer 	= setInterval(showRekap, 60000);
 				$('#preloader').delay(350).fadeOut('slow');
-				// console.log(app.db);
 				
-				
+				app.setSholawatSebelumSholat();
+				// app.showRekap();
+				app.scheduleNextCheck();
+				// app.playSholawat();
 				// let testTime	= moment().add(8,'seconds');
 				// app.runRightCountDown(testTime,'Menuju dzuhur');
 				// app.runFullCountDown(testTime,'iqomah',true);
 				// app.runFullCountDown(testTime,'TEST COUNTER',false);
 				// app.showDisplayAdzan('Dzuhur');
 				// app.showDisplayKhutbah();
-				// app.countDownRamadhan();
+				// app.countDownSyawal();
+				// app.refresPage();
 			},
 			cekPerDetik	: function(){
 				if(!app.tglHariIni || moment().format('YYYY-MM-DD') != moment(app.tglHariIni).format('YYYY-MM-DD')){
@@ -339,7 +324,7 @@
 					// console.log(app.tglBesok);
 					app.jadwalHariIni	= app.getJadwal(moment(app.tglHariIni).toDate());
 					app.jadwalBesok		= app.getJadwal(moment(app.tglBesok).toDate());
-					// console.log(app.jadwalHariIni.sunrise);
+					// console.log(app.jadwalHariIni.asr);
 					// console.log(app.jadwalBesok);
 					app.fajr	= moment(app.jadwalHariIni.fajr,'HH:mm:ss');
 					app.sunrise	= moment(app.jadwalHariIni.sunrise,'HH:mm');
@@ -377,19 +362,103 @@
 				});
 				// console.log('interval-1000');
 			},
+			playSholawat(){
+				// const durasiSholawat = 365400;
+				app.sholawat.play().then(() => {
+					console.log('Memainkan audio sholawat pertama...');
+					// setTimeout(() => {
+					// 	app.sholawat.currentTime = 0;
+					// 	app.sholawat.play().then(() => {
+					// 		console.log('Memainkan audio sholawat kedua...');
+					// 	}).catch(error => {
+					// 		console.log('Gagal memutar sholawat kedua....', error);
+					// 	});
+					// }, durasiSholawat);
+				}).catch(error => {
+					console.error('Gagal memutar audio:', error);
+				});
+				
+				// Pastikan audio sudah dimuat sebelum diputar
+				app.sholawat.addEventListener('canplaythrough', function() {
+					console.log('Audio siap diputar.');
+				});
+			},
+			// Fungsi untuk mengatur timer sholawat sebelum setiap waktu sholat
+			setSholawatSebelumSholat: function() {
+				const tglHariIni = new Date();
+				const waktuSholat = prayTimes.getTimes(tglHariIni, [lat, lng], timeZone, dst, format);
+				// console.log(waktuSholat);
+
+				// Daftar waktu sholat yang akan diproses
+				const sholatTimes = {
+					"Subuh": waktuSholat.fajr,
+					"Dzuhur": waktuSholat.dhuhr,
+					"Ashar": waktuSholat.asr,
+					"Maghrib": waktuSholat.maghrib,
+					"Isya": waktuSholat.isha,
+				};
+
+				let semuaSholatLewat = true; // Flag untuk menandai apakah semua sholat sudah lewat
+
+				// Loop melalui setiap waktu sholat
+				for (const [sholatName, sholatTime] of Object.entries(sholatTimes)) {
+					// Konversi waktu sholat ke objek Date
+					const sholatDate = new Date(tglHariIni.toDateString() + ' ' + sholatTime);
+
+					// Hitung waktu 15 menit sebelum sholat
+					const sholawatTime = new Date(sholatDate.getTime() - 15 * 60000);
+
+					const now = new Date();
+					const delay = sholawatTime.getTime() - now.getTime();
+
+					if (delay > 0) {
+						console.log(`Audio sholawat akan dimainkan 15 menit sebelum ${sholatName} pada:`, sholawatTime);
+						setTimeout(app.playSholawat, delay);
+						semuaSholatLewat = false; // Masih ada sholat yang belum lewat
+					} else {
+						console.log(`Waktu sholawat sebelum ${sholatName} sudah lewat hari ini.`);
+					}
+				}
+
+				// Jika semua sholat sudah lewat, jadwalkan ulang untuk hari berikutnya
+				if (semuaSholatLewat) {
+					console.log('Semua waktu sholat sudah lewat. Menjadwalkan ulang untuk hari berikutnya...');
+					scheduleNextDay();
+				}
+			},
+			jadwalSholawatBesok: function(){
+				const now = new Date();
+				const tengahMalam = new Date(now);
+				tengahMalam.setHours(24, 0, 0, 0); // Set ke tengah malam
+
+				const delay = tengahMalam.getTime() - now.getTime(); // Hitung selisih waktu sampai tengah malam
+
+				console.log(`Menjadwalkan ulang pada tengah malam: ${tengahMalam}`);
+				setTimeout(() => {
+					setSholawatBeforeSholat(); // Jalankan fungsi setelah tengah malam
+				}, delay);
+			},
 			getJadwal	: function(jadwalDate){
 				let times = prayTimes.getTimes(jadwalDate, [lat, lng], timeZone, dst, format);
+				// console.log(times);
 
 				// Konversi waktu sunrise ke dalam format Date
 				let sunriseTime = moment(times.sunrise, "HH:mm"); 
 
 				// Tambahkan 20 menit untuk waktu Dhuha
-				let dhuhaTime = sunriseTime.add(20, "minutes").format("HH:mm"); 
+				let dhuhaTime = sunriseTime.add(15, "minutes").format("HH:mm"); 
 
 				// Tambahkan waktu Dhuha ke dalam objek times
 				times.dhuha = dhuhaTime;
 
 				return times;
+			},
+			refresPage : function(){
+				const oneMinutes = 60000;
+				function refresh(){
+					location.reload();
+				}
+				setInterval(refresh, oneMinutes);
 			},
 			showJadwal	: function(){
 				// console.log(app.db.prayName)
@@ -400,6 +469,7 @@
 				let jadwal	= '';
 				let hari	= app.db.dayName[jamSekarang.format("dddd")];	//pastikan moment js pake standart inggris (default) ==> jangan pindah locale
 				let bulan	= app.db.monthName[jamSekarang.format("MMMM")];
+				// console.log(jamDelay.format('YYYY-MM-DD HH:mm:ss'));
 				
 				// $('#tgl').html(moment().format("dddd, DD MMMM YYYY"));
 				$('#jam').html(jamSekarang.format("HH.mm[<div>]ss[</div>]"));
@@ -437,9 +507,9 @@
 				});
 				$('#jadwal').html(jadwal);
 			},
-			countDownRamadhan : function(){
-				var countDownDate = new Date("Mar 31, 2025 17:44:00").getTime();
-				let ramadhan = '';
+			countDownSyawal : function(){
+				var countDownDate = new Date("Jun 05, 2025 17:31:00").getTime();
+				let syawal = '';
 
 				var x = setInterval(function () {
 					var now = new Date().getTime();
@@ -465,12 +535,12 @@
 
 					if (distance < 0) {
 						clearInterval(x);
-						// $('#ramadhan').fadeOut();
+						$('#syawal').fadeOut();
 						// $('#countRamadhan').html('<div id="ramadhan">Marhaban Ya Ramadhan 1446 H.</div>');
 						return;
 					}
 				}, 1000);
-				ramadhan += '<div class="countdown">' +
+				syawal += '<div class="countdown">' +
 				            '<div class="time"><span id="days">00</span><span>hari</span></div>' +
 							'<div class="semicolon">:</div>' +
 				            '<div class="time"><span id="hours">00</span><span>jam</span></div>' +
@@ -479,8 +549,8 @@
 							'<div class="semicolon">:</div>' +
 				            '<div class="time"><span id="seconds">00</span><span>detik</span></div>' +
 				            '</div>' +
-							'<div id="ramadhan">Menuju 1 Syawal 1446 H.</div>';
-				$('#countRamadhan').html(ramadhan);
+							'<div id="syawal">Menuju 10 Dzulhijjah 1446 H.</div>';
+				$('#countSyawal').html(syawal);
 			},
 			displaySchedule: function(){
 				// console.log(app.getNextPray());
@@ -687,26 +757,89 @@
 					'minutes'	: minutes,
 					'seconds'	: seconds
 				};
-			},
-			
+			},			
 			showRekap : function(){
-				let now = new Date();
-				let hours = now.getHours().toString().padStart(2, '0');
-				let minutes = now.getMinutes().toString().padStart(2, '0');
+				const now = new Date();
+				const hours = now.getHours().toString().padStart(2, '0');
+				const minutes = now.getMinutes().toString().padStart(2, '0');
+				const currentTime = `${hours}:${minutes}`;
 
-				// Daftar jam pindah halaman (sesuaikan dengan kebutuhan)
-				let schedule = {
-					"19:45": "/info/index.php",
-				};
+				// Jika waktu saat ini cocok dengan jadwal, lakukan redirect
+				if (this.schedule[currentTime]) {
+					console.log(`Redirecting to ${this.schedule[currentTime]} at ${currentTime}`);
+					window.location.href = this.schedule[currentTime]; // Redirect ke halaman tujuan
+					return; // Berhenti setelah redirect
+				}
 
-				let currentTime = `${hours}:${minutes}`;
+				// Jika tidak, jadwalkan pemeriksaan berikutnya
+				this.scheduleNextCheck();
+			},
+			// Fungsi untuk menjadwalkan pemeriksaan berikutnya
+			scheduleNextCheck: function() {
+				const now = new Date();
+				const currentTime = now.getHours() * 60 + now.getMinutes(); // Waktu saat ini dalam menit
 
-				if (schedule[currentTime]) {
-					window.location.href = schedule[currentTime]; // Redirect ke halaman tujuan
+				// Cari jadwal berikutnya
+				let nextScheduleTime = null;
+				let smallestDiff = Infinity;
+
+				for (const time in this.schedule) {
+					const [scheduleHours, scheduleMinutes] = time.split(':');
+					const scheduleTime = parseInt(scheduleHours) * 60 + parseInt(scheduleMinutes); // Jadwal dalam menit
+
+					// Hitung selisih waktu
+					let diff = scheduleTime - currentTime;
+					if (diff < 0) {
+						diff += 24 * 60; // Jika jadwal sudah lewat, tambahkan 24 jam
+					}
+
+					// Cari jadwal dengan selisih terkecil
+					if (diff < smallestDiff) {
+						smallestDiff = diff;
+						nextScheduleTime = scheduleTime;
+					}
+				}
+
+				// Jika ditemukan jadwal berikutnya, jadwalkan pemeriksaan
+				if (nextScheduleTime !== null) {
+					const delay = smallestDiff * 60 * 1000; // Konversi menit ke milidetik
+					console.log(`Next check scheduled in ${smallestDiff} minutes.`);
+					setTimeout(() => this.showRekap(), delay);
 				}
 			}
 		}
 		app.initialize();
+
+		function getHijriDate(){
+			const tglHariIni = new Date();
+			const adjustDate = new Date(tglHariIni);
+			adjustDate.setDate(adjustDate.getDate() - 1); // kurangi 1 hari
+
+			const waktuSholat = prayTimes.getTimes(tglHariIni, [lat, lng], timeZone, dst, format);
+			const maghribTime = waktuSholat.maghrib;
+
+			const hijriDate = new Intl.DateTimeFormat('id-u-ca-islamic', {
+				day: 'numeric',
+				month: 'long',
+				year: 'numeric'
+			});
+
+			// Buat objek Date untuk waktu Maghrib
+			const [maghribHours, maghribMinutes] = maghribTime.split(':');
+			const maghribDate = new Date(tglHariIni);
+			maghribDate.setHours(parseInt(maghribHours), parseInt(maghribMinutes));
+
+			// Bandingkan waktu sekarang dengan Maghrib
+			if (tglHariIni >= maghribDate) {
+				adjustDate.setDate(adjustDate.getDate() + 1);
+			}
+
+			return hijriDate.format(adjustDate);
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('hij').textContent = getHijriDate();
+		});
 	</script>
 </body>
 </html>

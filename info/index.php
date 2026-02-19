@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Dashboard | Al - Istiqomah</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -36,15 +36,23 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <!-- <style>
+    .card-title {
+      font-size: 50px;
+    }
+    .copyright {
+      font-size: 50px;
+    }
+  </style> -->
 </head>
 
 <body class="toggle-sidebar">
 
   <!-- ======= Header ======= -->
-  <header id="header" class="align-items-center" style="height: 10vw;">
+  <header id="header" class="align-items-center" style="height: 4vw;">
     <div class="d-flex align-items-center justify-content-between">
       <a href="../display/index.php">
-        <img src="../dist/img/1738810061.png" alt="" style="height: 12vw; width: 20vw;">
+        <img src="../dist/img/1738810061.png" alt="" style="height: 12vw; width: 20vw; position: absolute; top: 0; right: 0;">
       </a>
     </div><!-- End Logo -->
   </header><!-- End Header -->
@@ -64,13 +72,12 @@
 
     <section class="section dashboard">
       <div class="row">
-
         <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
 
             <!-- Infaq Card -->
-            <div class="col-xxl-4 col-md-6">
+            <div class="col-xxl-6 col-lg-6">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -87,17 +94,17 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Infaq Tarawih <span>| hari 2 :</span></h5>
-
+                  <h2 class="card-title">Infaq Tarawih hari ke - 28 :</h2>
                   <div class="d-flex align-items-center">
                     <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-cart"></i>
                     </div> -->
-                    <div class="ps-3">
-                      <h6 style="font-size: 5vw;">Rp. 875.900</h6>
-                      <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
-
-                    </div>
+                      
+                      <div class="ps-3">
+                        <h6 style="font-size: 3vw;">Rp. 435.000</h6>
+                        <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+                        
+                      </div>
                   </div>
                 </div>
 
@@ -105,7 +112,7 @@
             </div><!-- End Infaq Card -->
 
             <!-- Infaq Card -->
-            <div class="col-xxl-4 col-md-6">
+            <div class="col-xxl-6 col-lg-6">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -122,14 +129,14 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Total Infaq Tarawih <span>| sampai hari 2 :</span></h5>
+                  <h5 class="card-title">Total Infaq Tarawih :</h5>
 
                   <div class="d-flex align-items-center">
                     <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-cart"></i>
                     </div> -->
                     <div class="ps-3">
-                      <h6 style="font-size: 5vw;">Rp. 1.802.700</h6>
+                      <h6 style="font-size: 3vw;">Rp. 13.700.100 </h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                     </div>
@@ -143,11 +150,11 @@
       </div>
       
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-xxl-12 col-lg-12">
           <div class="row">
 
-          <!-- Fitrah Uang -->
-            <div class="col-md-3">
+            <!-- Fitrah Uang -->
+            <div class="col-lg-4">
               <div class="card info-card sales-card">
   
                 <div class="filter">
@@ -171,7 +178,7 @@
                       <i class="bi bi-cart"></i>
                     </div> -->
                     <div class="ps-3">
-                      <h6 style="font-size: 3vw;">Rp. -</h6>
+                      <h6 style="font-size: 3vw;">Rp. 17.142.000</h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
   
                     </div>
@@ -181,9 +188,8 @@
               </div>
             </div>
 
-
             <!-- Fitrah Beras -->
-            <div class="col-md-3">
+            <div class="col-lg-4">
               <div class="card info-card sales-card">
   
                 <div class="filter">
@@ -207,7 +213,7 @@
                       <i class="bi bi-cart"></i>
                     </div> -->
                     <div class="ps-3">
-                      <h6 style="font-size: 3vw;">- .Kg</h6>
+                      <h6 style="font-size: 3vw;"> 456 .Kg</h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
   
                     </div>
@@ -218,7 +224,7 @@
             </div>
 
             <!-- Mal -->
-            <div class="col-md-3">
+            <div class="col-lg-4">
               <div class="card info-card sales-card">
   
                 <div class="filter">
@@ -242,7 +248,7 @@
                       <i class="bi bi-cart"></i>
                     </div> -->
                     <div class="ps-3">
-                      <h6 style="font-size: 3vw;">Rp. -</h6>
+                      <h6 style="font-size: 3vw;">Rp. 12.480.000,-</h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
   
                     </div>
@@ -252,7 +258,13 @@
               </div>
             </div> 
             
-            <div class="col-md-3">
+          </div>
+        </div>
+
+        <div class="col-xxl-12 col-lg-12">
+          <div class="row">
+              <!-- Infaq -->
+            <div class="col-lg-4">
               <div class="card info-card sales-card">
   
                 <div class="filter">
@@ -276,7 +288,77 @@
                       <i class="bi bi-cart"></i>
                     </div> -->
                     <div class="ps-3">
-                      <h6 style="font-size: 3vw;">Rp. -</h6>
+                      <h6 style="font-size: 3vw;">Rp. 417.500,-</h6>
+                      <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+  
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+
+            <!-- Sodaqoh -->
+            <div class="col-lg-4">
+              <div class="card info-card sales-card">
+  
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+  
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+  
+                <div class="card-body">
+                  <h5 class="card-title">Sodaqoh </h5>
+  
+                  <div class="d-flex align-items-center">
+                    <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div> -->
+                    <div class="ps-3">
+                      <h6 style="font-size: 3vw;">Rp. 2.950.000,-</h6>
+                      <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+  
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+
+            <!-- Fidyah -->
+            <div class="col-lg-4">
+              <div class="card info-card sales-card">
+  
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+  
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+  
+                <div class="card-body">
+                  <h5 class="card-title">Fidyah </h5>
+  
+                  <div class="d-flex align-items-center">
+                    <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div> -->
+                    <div class="ps-3">
+                      <h6 style="font-size: 3vw;">Rp. 2.180.000,-</h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
   
                     </div>
@@ -293,15 +375,11 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footer" style="height: 30px;">
     <div class="copyright">
       &copy; Copyright <strong><span>Al - Istiqomah</span></strong> <?php echo date('Y')?>. All Rights Reserved
     </div>
     <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
   </footer><!-- End Footer -->
@@ -321,7 +399,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <script>
+  <!-- <script>
     setInterval(function() {
         let now = new Date();
         let hours = now.getHours();
@@ -329,6 +407,8 @@
 
         // Daftar jam pindah halaman (sesuaikan dengan kebutuhan)
         let schedule = {
+            "05:30": "/display/index.php",
+            "14:00": "/display/index.php",
             "21:00": "/display/index.php",
         };
 
@@ -339,7 +419,72 @@
         }
     }, 60000); // Cek setiap 1 menit
 
-  </script>
+  </script> -->
+
+  <script>
+    // Daftar jam pindah halaman (sesuaikan dengan kebutuhan)
+    const schedule = {
+        // "05:30": "/display/index.php",
+        // "14:00": "/display/index.php",
+        // "17:00": "/display/index.php",
+        // "20:30": "/display/index.php",
+    };
+
+    // Fungsi untuk memeriksa jadwal dan redirect
+    function checkSchedule() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const currentTime = `${hours}:${minutes}`;
+
+        // Jika waktu saat ini cocok dengan jadwal, lakukan redirect
+        if (schedule[currentTime]) {
+            console.log(`Redirecting to ${schedule[currentTime]} at ${currentTime}`);
+            window.location.href = schedule[currentTime]; // Redirect ke halaman tujuan
+            return; // Berhenti setelah redirect
+        }
+
+        // Jika tidak, jadwalkan pemeriksaan berikutnya
+        scheduleNextCheck();
+    }
+
+    // Fungsi untuk menjadwalkan pemeriksaan berikutnya
+    function scheduleNextCheck() {
+        const now = new Date();
+        const currentTime = now.getHours() * 60 + now.getMinutes(); // Waktu saat ini dalam menit
+
+        // Cari jadwal berikutnya
+        let nextScheduleTime = null;
+        let smallestDiff = Infinity;
+
+        for (const time in schedule) {
+            const [scheduleHours, scheduleMinutes] = time.split(':');
+            const scheduleTime = parseInt(scheduleHours) * 60 + parseInt(scheduleMinutes); // Jadwal dalam menit
+
+            // Hitung selisih waktu
+            let diff = scheduleTime - currentTime;
+            if (diff < 0) {
+                diff += 24 * 60; // Jika jadwal sudah lewat, tambahkan 24 jam
+            }
+
+            // Cari jadwal dengan selisih terkecil
+            if (diff < smallestDiff) {
+                smallestDiff = diff;
+                nextScheduleTime = scheduleTime;
+            }
+        }
+
+        // Jika ditemukan jadwal berikutnya, jadwalkan pemeriksaan
+        if (nextScheduleTime !== null) {
+            const delay = smallestDiff * 60 * 1000; // Konversi menit ke milidetik
+            console.log(`Next check scheduled in ${smallestDiff} minutes.`);
+            setTimeout(checkSchedule, delay);
+        }
+    }
+
+    // Mulai penjadwalan
+    scheduleNextCheck();
+</script>
 
 </body>
 

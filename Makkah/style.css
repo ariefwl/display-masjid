@@ -1,0 +1,357 @@
+* { box-sizing: border-box; }
+
+body {
+    position: relative;
+	margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+}
+
+/* Video */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+/* ------------------ */
+
+#up-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.up-left, .up-center, .up-right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.up-left {
+    text-align: left;
+    width: 25%;
+}
+
+.up-center {
+    text-align: center;
+    width: 50%;
+}
+
+.up-right {
+    text-align: right;
+    width: 20%;
+}
+
+#logo{
+    background-image: url('logoPutih.png');   
+    background-repeat: no-repeat;
+    background-size: contain; /* Gambar akan menyesuaikan tanpa terdistorsi */
+    height: 200px; /* Ukuran fixed atau sesuaikan */
+    width: 250px; /* Ukuran fixed atau sesuaikan */
+}
+
+/* Countdown Sholat */
+
+#prayer-countdown-banner {
+    position: fixed;
+    bottom: 25%;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Kembalikan ke tinggi normal */
+    z-index: 3;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.countdown-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    padding: 0 30px;
+    border-radius: 8px;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    /* border: 2px solid rgba(255, 255, 255, 0.2); */
+}
+
+.prayerName {
+    color: #ffcc00;
+    min-width: 100px;
+    text-align: center;
+}
+
+.countdown-separator {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.countdown-timer {
+    font-family: 'Courier New', monospace;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: 2px solid #ffcc00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    animation: pulse 1.5s infinite alternate;
+}
+
+#countDown{
+	/* font-family: 'Arial'; */
+	position: fixed;
+	right: 2vw;
+	bottom: 15vw;
+    z-index: 3;
+	text-align: right;
+	color: yellow;
+	font-size: 2vw;
+	font-weight: bold;
+}
+
+#down-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    box-sizing: border-box; 
+    /* background-color: rgba(0, 0, 0, 0.4); */
+	background:linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.7) 70%);
+	box-shadow: 0 0 20vw 20vw rgba(0,0,0,0.7);
+}
+
+#down-container:before{
+	display: block;
+	content: "";
+	position:absolute;
+	height: 20%;
+    width: 100%;
+	left:0;
+	bottom:0;
+    background-image: url('/Makkah/pattern1.png');
+    background-repeat: repeat;
+    background-size: 200px; /* Sesuaikan ukuran pattern */
+    /* background-blend-mode: overlay; */
+    /* opacity:2; */
+}
+
+/* Optional: Tambahkan overlay semi-transparan untuk meningkatkan keterbacaan teks */
+#up-container::before, #down-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0, 0, 0, 0.3); */
+    z-index: -1;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .5;
+}
+
+.prayer-schedule {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* background-color: blue; */
+    width: 100%;
+}
+
+.prayer-names, .prayer-times {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.prayer-name, .prayer-time {
+    text-align: center;
+    padding: 10px;
+    flex: 1;
+}
+
+.prayer-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: yellow;
+}
+
+.prayer-time {
+    font-size: 2rem;
+    font-weight: bold;
+    color: orange;
+}
+
+.current-prayer {
+    color: #ffff00;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.7);
+}
+
+/* ------------ */
+/* Style untuk prayer items */
+.prayer-name, .prayer-time {
+    text-align: center;
+    padding: 0px;
+    flex: 1;
+    position: relative;
+}
+
+/* Border untuk waktu sholat */
+.prayer-time {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Highlight untuk waktu sholat saat ini */
+.current-prayer {
+    border-color: #ffff00;
+    background-color: rgba(255, 255, 0, 0.1);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+}
+
+/* Responsive untuk layar kecil */
+@media (max-width: 768px) {
+    .prayer-time {
+        border-width: 1px;
+        border-radius: 4px;
+        margin: 0 2px;
+    }
+}
+
+.prayer-time {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.prayer-time::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+.current-prayer::after {
+    width: 80%;
+    background: #ffff00;
+    box-shadow: 0 0 10px #ffff00;
+}
+
+
+/* -------------------------- */
+
+/* Slide text */
+
+#announcement-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    display: flex; /* Tambahkan flexbox */
+    align-items: center; /* Vertikal center */
+}
+
+.announcement-clock {
+    width: 150px; /* Lebar fixed untuk jam */
+    padding: 0 15px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffff00;
+    text-shadow: 0 0 5px rgba(255, 255, 0, 0.7);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+}
+
+.announcement-text-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: calc(100% - 150px); /* Sesuaikan dengan lebar jam */
+}
+
+.announcement-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: running-text 20s linear infinite;
+    font-size: 2rem;
+    color: white;
+}
+
+@keyframes running-text {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+
+/* Sesuaikan tinggi down-container */
+#down-container {
+    height: 25%; /* Kurangi dari 20% agar ada ruang untuk pengumuman */
+}
+
+.hari {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: yellow;
+}
+
+.tanggal-masehi, .tanggal-hijriyah {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: yellow;
+}
