@@ -410,7 +410,7 @@ class proses extends fb{
 						<input name="r1" type="text" maxlength="100" class="form-control" value="<?=$v[0]?>" required>
 						</div>
 						<div class="input">
-						<textarea name="r2" maxlength="255" rows="3" class="form-control" ><?=$v[1]?></textarea>
+						<textarea name="r2" maxlength="500" rows="3" class="form-control" ><?=$v[1]?></textarea>
 						</div>
 						<div class="input-group">
 						<span class="input-group-addon">Footer</span>

@@ -1,2 +1,1 @@
-
-    <h1>Masjid Al - Istiqomah</h1>
+<?php phpinfo();

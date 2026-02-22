@@ -1,1 +1,95 @@
-{"akses":{"user":"admin","pass":"1q0p2w9o"},"setting":{"nama":"Masjid Al - Istiqomah","lokasi":"Banyumanik Semarang","latitude":"-6.99","longitude":"110.42","timeZone":"7","dst":"0"},"prayTimesMethod":"0","prayTimesAdjust":{"fajr":20,"dhuhr":"","asr":"Standard","maghrib":"","isha":18},"prayTimesTune":{"fajr":"2","dhuhr":"2","asr":"2","maghrib":"2","isha":"2"},"prayName":{"imsak":"Imsak","fajr":"Subuh","sunrise":"Syuruq","dhuha":"Dhuha","dhuhr":"Dzuhur","asr":"Ashar","maghrib":"Maghrib","isha":"Isya'"},"timeName":{"Hours":"Jam","Minutes":"Menit","Seconds":"Detik"},"dayName":{"Sunday":"Ahad","Monday":"Senin","Tuesday":"Selasa","Wednesday":"Rabu","Thursday":"Kamis","Friday":"Jum'at","Saturday":"Sabtu"},"monthName":{"January":"Januari","February":"Februari","March":"Maret","April":"April","May":"Mei","June":"Juni","July":"Juli","August":"Agustus","September":"September","October":"Oktober","November":"November","December":"Desember"},"timer":{"info":"20","wallpaper":"20","wait_adzan":"3","adzan":"3","sholat":"10"},"iqomah":{"fajr":"15","dhuhr":"11","asr":"11","maghrib":"12","isha":"11"},"jumat":{"active":"1","duration":"25","text":"Harap diam saat khotib khutbah"},"tarawih":{"active":"0","duration":"10"},"info":[["\u0639\u064e\u0646\u0652 \u064e\u0623\u0628\u0650\u064a \u0647\u064f\u0631\u064e\u064a\u0652\u0631\u064e\u0629: \u064e\u0623\u0646\u064e\u0651 \u0631\u064e\u0633\u064f\u0648\u0652\u0644 \u0627\u0644\u0644\u0647\u0650 \u0635\u0644\u0649 \u0627\u0644\u0644\u0647 \u0639\u0644\u064a\u0647 \u0648\u0633\u0644\u0645 \u0642\u0627\u0644 : \u0645\u064e\u0646\u0652 \u0643\u064e\u0627\u0646\u064e \u0644\u0647\u064f \u0633\u064e\u0639\u064e\u0629 \u0648\u064e\u0644\u0645\u0652 \u064a\u064e\u0636\u064e\u062d\u0652","\u201cDari Abu Hurairah, \u201cRasulullah SAW telah bersabda, barangsiapa yang mempunyai kemampuan, tetapi ia tidak berkurban maka janganlah ia mendekati (menghampiri) tempat salat kami.\u201d","HR. Ahmad dan Ibnu Majah","1"],["\u0645\u064e\u0646\u0652 \u0642\u064e\u0627\u0645\u064e \u0631\u064e\u0645\u064e\u0636\u064e\u0627\u0646\u064e \u0625\u064a\u0652\u0645\u064e\u0627 \u0646\u064b\u0627 \u0648\u064e\u0627\u062d\u0652\u062a\u0650\u0633\u064e\u0627\u0628\u064b\u0627 \u063a\u064f\u0641\u0650\u0631\u064e \u0644\u064e\u0647\u064f \u0645\u064e\u0627 \u062a\u064e\u0642\u064e\u062f\u0651\u064e\u0645\u064e \u0645\u0650\u0646\u0652 \u0630\u064e\u0646\u0652\u0628\u0650\u0647\u0650 ","\u201cNabi Muhammad SAW. berkurban dengan dua kambing gemuk dan bertanduk. Saya melihat Nabi Saw. meletakkan kedua kakinya di atas pundak kambing tersebut, kemudian Nabi Saw. membaca basmalah, takbir dan menyembelih dengan tangannya sendiri.\u201d ","HR Bukhari","1"],["\u0641\u0635\u0644 \u0644\u0631\u0643 \u0648\u0627\u0646\u062d\u0631","Dirikanlah shalat karena Tuhanmu dan berkurbanlah.","Al-Kautsar ayat 3","1"],["\u0623\u0646\u0647 \u0639\u0644\u064a\u0647 \u0627\u0644\u0635\u0644\u0627\u0629 \u0648\u0627\u0644\u0633\u0644\u0627\u0645 \u0642\u0627\u0644: \u0623\u0645\u0631\u062a \u0627\u0644\u0646\u062d\u0631 \u0648\u0647\u0648 \u0633\u0646\u0629 \u0644\u0643\u0645","Rasulullah pernah bersabda: aku diperintahkan untuk berkurban, dan berkurban bagi kalian adalah sunnah.","Rasulullah","1"]],"running_text":["Selamat datang di Masjid Al - Istiqomah Jl. Jati Raya No. 1","Berikan infaq terbaik anda melalui rekening Bank Syariah Indonesia No. Rekening 7725 7726 23 a\/n Masjid Al - Istiqomah atau Bank Jateng No. Rekening 3-146-04955-8 a\/n Masjid Al - Istiqomah ","Demi kekhusyukan beribadah tolong  handphone di matikan atau di setting mode hening"]}
+{
+    "akses":{
+        "user":"admin",
+        "pass":"1q0p2w9o"
+    },
+    "setting":{
+        "nama":"Masjid Al - Istiqomah",
+        "lokasi":"Banyumanik Semarang",
+        "latitude":"-6.99",
+        "longitude":"110.42",
+        "timeZone":"7",
+        "dst":"0"
+    },
+    "prayTimesMethod":"0",
+    "prayTimesAdjust":{
+        "fajr":20,
+        "dhuhr":"",
+        "asr":"Standard",
+        "maghrib":"",
+        "isha":18
+    },
+    "prayTimesTune":{
+        "fajr":"2",
+        "dhuhr":"2",
+        "asr":"2",
+        "maghrib":"2",
+        "isha":"2"
+    },
+    "prayName":{
+        "imsak":"Imsak",
+        "fajr":"Subuh",
+        "sunrise":"Syuruq",
+        "dhuha":"Dhuha",
+        "dhuhr":"Dzuhur",
+        "asr":"Ashar",
+        "maghrib":"Maghrib",
+        "isha":"Isya'"
+    },
+    "timeName":{
+        "Hours":"Jam",
+        "Minutes":"Menit",
+        "Seconds":"Detik"
+    },
+    "dayName":{
+        "Sunday":"Ahad",
+        "Monday":"Senin",
+        "Tuesday":"Selasa",
+        "Wednesday":"Rabu",
+        "Thursday":"Kamis",
+        "Friday":"Jum'at",
+        "Saturday":"Sabtu"
+    },
+    "monthName":{
+        "January":"Januari",
+        "February":"Februari",
+        "March":"Maret",
+        "April":"April",
+        "May":"Mei",
+        "June":"Juni",
+        "July":"Juli",
+        "August":"Agustus",
+        "September":"September",
+        "October":"Oktober",
+        "November":"November",
+        "December":"Desember"
+    },
+    "timer":{
+        "info":"20",
+        "wallpaper":"20",
+        "wait_adzan":"3",
+        "adzan":"3",
+        "sholat":"10"
+    },
+    "iqomah":{
+        "fajr":"15",
+        "dhuhr":"10",
+        "asr":"10",
+        "maghrib":"10",
+        "isha":"5"},
+    "jumat":{
+        "active":"1",
+        "duration":"25",
+        "text":"Harap diam saat khotib khutbah"
+    },
+    "tarawih":{
+        "active":"0",
+        "duration":"10"
+    },
+    "info":[["\u0639\u064e\u0646\u0652 \u064e\u0623\u0628\u0650\u064a \u0647\u064f\u0631\u064e\u064a\u0652\u0631\u064e\u0629: \u064e\u0623\u0646\u064e\u0651 \u0631\u064e\u0633\u064f\u0648\u0652\u0644 \u0627\u0644\u0644\u0647\u0650 \u0635\u0644\u0649 \u0627\u0644\u0644\u0647 \u0639\u0644\u064a\u0647 \u0648\u0633\u0644\u0645 \u0642\u0627\u0644 : \u0645\u064e\u0646\u0652 \u0643\u064e\u0627\u0646\u064e \u0644\u0647\u064f \u0633\u064e\u0639\u064e\u0629 \u0648\u064e\u0644\u0645\u0652 \u064a\u064e\u0636\u064e\u062d\u0652","\u201cDari Abu Hurairah, \u201cRasulullah SAW telah bersabda, barangsiapa yang mempunyai kemampuan, tetapi ia tidak berkurban maka janganlah ia mendekati (menghampiri) tempat salat kami.\u201d","HR. Ahmad dan Ibnu Majah","1"],["\u0645\u064e\u0646\u0652 \u0642\u064e\u0627\u0645\u064e \u0631\u064e\u0645\u064e\u0636\u064e\u0627\u0646\u064e \u0625\u064a\u0652\u0645\u064e\u0627 \u0646\u064b\u0627 \u0648\u064e\u0627\u062d\u0652\u062a\u0650\u0633\u064e\u0627\u0628\u064b\u0627 \u063a\u064f\u0641\u0650\u0631\u064e \u0644\u064e\u0647\u064f \u0645\u064e\u0627 \u062a\u064e\u0642\u064e\u062f\u0651\u064e\u0645\u064e \u0645\u0650\u0646\u0652 \u0630\u064e\u0646\u0652\u0628\u0650\u0647\u0650 ","\u201cNabi Muhammad SAW. berkurban dengan dua kambing gemuk dan bertanduk. Saya melihat Nabi Saw. meletakkan kedua kakinya di atas pundak kambing tersebut, kemudian Nabi Saw. membaca basmalah, takbir dan menyembelih dengan tangannya sendiri.\u201d ","HR Bukhari","1"],["\u0641\u0635\u0644 \u0644\u0631\u0643 \u0648\u0627\u0646\u062d\u0631","Dirikanlah shalat karena Tuhanmu dan berkurbanlah.","Al-Kautsar ayat 3","1"],["\u0623\u0646\u0647 \u0639\u0644\u064a\u0647 \u0627\u0644\u0635\u0644\u0627\u0629 \u0648\u0627\u0644\u0633\u0644\u0627\u0645 \u0642\u0627\u0644: \u0623\u0645\u0631\u062a \u0627\u0644\u0646\u062d\u0631 \u0648\u0647\u0648 \u0633\u0646\u0629 \u0644\u0643\u0645","Rasulullah pernah bersabda: aku diperintahkan untuk berkurban, dan berkurban bagi kalian adalah sunnah.","Rasulullah","1"]],
+    "running_text":[
+        "Infaq Tarawih hari ke-3 = Rp. 651.000", 
+        "Total Infaq Tarawih = Rp. 2.194.500",
+        "Jazakumullah khairan katsiran"
+    ]
+}

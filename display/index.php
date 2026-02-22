@@ -208,8 +208,6 @@
 		
 		const countDown = {
 			hariBesar: {
-				'Isra` & Mi`raj': 'Jan 16, 2026',
-				'1 Ramadhan 1447 H.': 'Feb 19, 2026',
 				'1 Syawal 1447 H.': 'Mar 20, 2026',
 				'Idul Adha': 'May 27, 2026',
 				'1 Muharam 1448 H.': 'Jun 17, 2026',
@@ -294,7 +292,7 @@
 							"12:20": "/Makkah/index.php",
 							"15:35": "/Makkah/index.php",
 							"18:30": "/Makkah/index.php",
-							"19:35": "/Makkah/index.php",
+							"20:00": "/Makkah/index.php",
 						},
 			
 			initialize	: function(){
